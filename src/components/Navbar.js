@@ -25,7 +25,7 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-background/5 backdrop-blur-lg border-b border-white/10">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-background/5 backdrop-blur-lg border-b border-white/10 p-2">
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold glow-text">D<span className="text-purple-light">.</span></Link>
         

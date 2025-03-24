@@ -60,7 +60,12 @@ body {
   position: relative;
   background: rgba(0, 0, 0, 0.5);
   min-height: 100vh;
-  padding-top: 4rem; /* Add padding for fixed navbar */
+  padding-top: 4rem; /* Navbar height */
+}
+
+/* Ensure the first section (hero) handles the navbar padding correctly */
+.content-section > section:first-child {
+  margin-top: -4rem;
 }
 
 /* Glass effect utilities */

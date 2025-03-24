@@ -6,14 +6,13 @@ import Link from 'next/link'
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen pt-20 flex items-center justify-center overflow-hidden">
-      {/* Remove background glow effect since we have global gradient */}
-      <div className="container mx-auto px-4 z-10">
+    <section id="home" className="relative min-h-[calc(100vh-4rem)] w-full flex flex-col items-center justify-center">
+      <div className="container mx-auto px-4 max-w-6xl">
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="text-center"
+          className="text-center mt-[-4rem]"
         >
           <motion.h2 
             initial={{ y: 20, opacity: 0 }}
@@ -49,7 +48,7 @@ export default function HeroSection() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="max-w-xl mx-auto text-text-muted mb-12"
+            className="max-w-xl mx-auto text-text-muted mb-12 px-4"
           >
             Crafting intelligent solutions with LLMs & data science magic. ✨ 
             Turning complex problems into elegant, AI-powered experiences.
@@ -59,10 +58,10 @@ export default function HeroSection() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="flex justify-center space-x-4"
+            className="flex flex-col sm:flex-row justify-center gap-4 px-4"
           >
-            <Link href="#about" className="glass-button px-6 py-3 flex items-center">
-              <span className="mr-2">Discover my work</span>
+            <Link href="#about" className="glass-button px-6 py-3 flex items-center justify-center">
+              <span>Discover my work</span>
             </Link>
             <Link href="#contact" className="glass-button px-6 py-3 bg-purple-dark/50">
               Get in touch
@@ -75,7 +74,7 @@ export default function HeroSection() {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <Link href="#about" className="flex flex-col items-center text-text-secondary hover:text-text-primary transition-colors">
           <span className="mb-2 text-sm">Scroll down</span>
