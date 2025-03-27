@@ -95,7 +95,11 @@ export default function SmoothScroll({
         const targetElement = document.getElementById(targetId);
         
         if (targetElement) {
-          const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+          // Get the navbar height to offset the scroll position
+          const navbar = document.querySelector('nav');
+          const navbarHeight = navbar ? navbar.offsetHeight : 0;
+          
+          const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight;
           window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'
@@ -139,6 +143,8 @@ export default function SmoothScroll({
         height: 'auto',
         willChange: 'transform',
         y: isReady ? y : 0,
+        // Add top padding to account for the navbar height
+        paddingTop: '64px', // Approximate navbar height, adjust as needed
       }}
       initial={{ opacity: 0 }}
       animate={{ 
@@ -151,4 +157,4 @@ export default function SmoothScroll({
       {children}
     </motion.div>
   );
-} 
+}

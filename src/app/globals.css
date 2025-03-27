@@ -109,3 +109,18 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
+
+/* Glowing icon effect for back to top button */
+.glow-icon {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+  animation: pulse-glow 2s infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+  }
+}
