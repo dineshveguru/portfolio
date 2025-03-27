@@ -45,3 +45,5 @@ export default function Home() {
     </ErrorBoundary>
   );
 }
+
+//TODO: Change the cursor to circle
