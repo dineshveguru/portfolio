@@ -28,6 +28,7 @@ export default function HeroSection() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold mb-6 glow-text"
+            
           >
             Dinesh
           </motion.h1>
@@ -38,7 +39,8 @@ export default function HeroSection() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="relative mb-8 inline-block"
           >
-            <h3 className="text-2xl md:text-3xl font-medium text-text-secondary">
+            <h3 className="text-2xl md:text-3xl font-medium text-text-secondary"
+            >
               AI & Data Science Engineer
             </h3>
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-purple-light/50 rounded-full"></div>

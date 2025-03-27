@@ -32,7 +32,7 @@ const skillCategories = [
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-20">
+    <section id='skills' className="min-h-screen w-full flex items-center justify-center py-20">
       <div className="container mx-auto px-4">
         <SectionHeading>Skills</SectionHeading>
         <motion.div

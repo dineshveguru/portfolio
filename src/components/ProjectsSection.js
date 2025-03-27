@@ -23,7 +23,7 @@ const projects = [
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-20">
+    <section id='projects' className="min-h-screen w-full flex items-center justify-center py-20">
       <div className="container mx-auto px-4">
         <SectionHeading>Projects</SectionHeading>
         <motion.div

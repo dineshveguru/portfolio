@@ -6,7 +6,7 @@ import SectionHeading from './SectionHeading'
 
 const AboutSection = () => {
   return (
-    <section className="py-20">
+    <section id='about' className="min-h-screen w-full flex items-center justify-center py-20">
       <div className="container mx-auto px-4">
         <SectionHeading>About Me</SectionHeading>
         <motion.div 

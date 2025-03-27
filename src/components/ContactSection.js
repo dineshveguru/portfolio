@@ -4,7 +4,7 @@ import SectionHeading from './SectionHeading'
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20">
+    <section id='contact' className="min-h-screen w-full flex items-center justify-center py-20">
       <div className="container mx-auto px-4">
         <SectionHeading>Contact</SectionHeading>
         <motion.div

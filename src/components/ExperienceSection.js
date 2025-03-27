@@ -23,7 +23,7 @@ export default function ExperienceSection() {
   ]
   
   return (
-    <section id="experience" className="py-20">
+    <section id='experience' className="min-h-screen w-full flex items-center justify-center py-20">
       <div className="container mx-auto px-4">
         <SectionHeading>Experience</SectionHeading>
         <motion.div
