@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { FiMail, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi'
+import {FaXTwitter} from "react-icons/fa6"
 import SectionHeading from './SectionHeading'
 import { InlineWidget } from 'react-calendly'
 import { useState } from 'react'
@@ -32,14 +33,14 @@ const ContactSection = () => {
             className="flex justify-center space-x-4 mb-12"
           >
             <a 
-              href="mailto:dinesh@example.com" 
+              href="mailto:dineshveguru123@gmail.com" 
               className="glass-button p-4"
               aria-label="Email"
             >
               <FiMail className="text-lg" />
             </a>
             <a 
-              href="https://github.com/dinesh" 
+              href="https://github.com/dineshveguru" 
               target="_blank" 
               rel="noopener noreferrer"
               className="glass-button p-4"
@@ -48,7 +49,7 @@ const ContactSection = () => {
               <FiGithub className="text-lg" />
             </a>
             <a 
-              href="https://linkedin.com/in/dinesh" 
+              href="https://linkedin.com/in/dineshveguru" 
               target="_blank" 
               rel="noopener noreferrer"
               className="glass-button p-4"
@@ -57,13 +58,13 @@ const ContactSection = () => {
               <FiLinkedin className="text-lg" />
             </a>
             <a 
-              href="https://twitter.com/dinesh" 
+              href="https://x.com/vegurudinesh" 
               target="_blank" 
               rel="noopener noreferrer"
               className="glass-button p-4"
               aria-label="Twitter"
             >
-              <FiTwitter className="text-lg" />
+              <FaXTwitter className="text-lg" />
             </a>
           </motion.div>
           
