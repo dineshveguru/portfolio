@@ -4,16 +4,30 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import GitHubCalendar from 'react-github-calendar';
 import SectionHeading from './SectionHeading';
+import { useTheme } from './ThemeProvider';
 
 const GitHubActivitySection = () => {
   const [username] = useState('dineshveguru'); // Replace with your actual GitHub username
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { theme } = useTheme();
   
   // Single neon blue color with increasing intensity
   const neonTheme = {
     dark: ['#2D2D2D', '#0A2342', '#126BCE', '#0D73FF', '#00BFFF'],
     light: ['#ebedf0', '#79C0FF', '#409EFF', '#1F6FEB', '#0A3069'],
+  };
+
+  // Determine which colorScheme to use based on current app theme
+  // When theme is 'system', use the document's classList to detect dark or light
+  const getThemeValue = () => {
+    if (theme === 'system') {
+      if (typeof document !== 'undefined') {
+        return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      }
+      return 'dark'; // Default when SSR
+    }
+    return theme;
   };
 
   useEffect(() => {
@@ -58,6 +72,7 @@ const GitHubActivitySection = () => {
                   blockSize={12}
                   blockMargin={4}
                   fontSize={12}
+                  colorScheme={getThemeValue()}
                   hideColorLegend={false}
                   hideMonthLabels={false}
                   labels={{

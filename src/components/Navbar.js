@@ -2,8 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiMenu, FiX } from 'react-icons/fi'
+import ThemeToggle from './ThemeToggle'
+import { useTheme } from './ThemeProvider'
 
 const NavItem = ({ href, text }) => (
   <motion.div
@@ -25,6 +28,8 @@ const NavItem = ({ href, text }) => (
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { theme } = useTheme()
+  const [currentLogo, setCurrentLogo] = useState('/d.png')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +38,33 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    // Update logo based on theme
+    if (theme === 'dark') {
+      setCurrentLogo('/d_dark.png')
+    } else if (theme === 'light') {
+      setCurrentLogo('/d_light.png')
+    } else if (theme === 'system') {
+      // Check system preference
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      setCurrentLogo(systemTheme === 'dark' ? '/d_dark.png' : '/d_light.png')
+    }
+  }, [theme])
+
+  // Add listener for system theme changes when in system mode
+  useEffect(() => {
+    if (theme === 'system') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+      
+      const handleChange = () => {
+        setCurrentLogo(mediaQuery.matches ? '/d_dark.png' : '/d_light.png')
+      }
+      
+      mediaQuery.addEventListener('change', handleChange)
+      return () => mediaQuery.removeEventListener('change', handleChange)
+    }
+  }, [theme])
 
   return (
     <motion.nav 
@@ -48,30 +80,42 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Link href="/" className="text-2xl font-bold glow-text">
-            D<span className="text-purple-light">.</span>
+          <Link href="/" className="flex items-center">
+            <div className="relative h-8 w-8">
+              <Image 
+                src={currentLogo} 
+                alt="Logo" 
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           </Link>
         </motion.div>
         
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex space-x-8 items-center">
           <NavItem href="#home" text="Home" />
           <NavItem href="#about" text="About" />
           <NavItem href="#experience" text="Experience" />
           <NavItem href="#projects" text="Projects" />
           <NavItem href="#skills" text="Skills" />
           <NavItem href="#contact" text="Contact" />
+          <ThemeToggle />
         </div>
         
         {/* Mobile Menu Button */}
-        <motion.button 
-          className="md:hidden glass-button p-2"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <FiX /> : <FiMenu />}
-        </motion.button>
+        <div className="md:hidden flex items-center gap-4">
+          <ThemeToggle />
+          <motion.button 
+            className="glass-button p-2"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <FiX /> : <FiMenu />}
+          </motion.button>
+        </div>
       </div>
       
       {/* Mobile Menu */}

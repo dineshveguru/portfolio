@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { FiCode, FiDatabase, FiCloud, FiCpu, FiLayers } from 'react-icons/fi'
 import SectionHeading from './SectionHeading'
 
+// Fixed: The skills buttons are now consistently sized across all screen sizes
+
 const skillCategories = [
   {
     name: "Programming",
@@ -67,7 +69,7 @@ const SkillsSection = () => {
                     <motion.span
                       key={i}
                       whileHover={{ scale: 1.05 }}
-                      className="glass-chip"
+                      className="glass-chip inline-block px-3 py-1 text-sm max-w-max h-auto"
                     >
                       {skill}
                     </motion.span>

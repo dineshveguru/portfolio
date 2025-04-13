@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import SectionHeading from './SectionHeading'
 
+// FIXME: The text in the company box is overflowing outside for some devices
+
 export default function ExperienceSection() {
   const [activeTab, setActiveTab] = useState(0)
   
@@ -39,12 +41,13 @@ export default function ExperienceSection() {
                 {experiences.map((exp, index) => (
                   <button
                     key={index}
-                    className={`whitespace-nowrap text-left px-4 py-3 rounded-lg border transition-all ${
+                    className={`truncate max-w-full text-left px-4 py-3 rounded-lg border transition-all ${
                       activeTab === index 
                         ? 'border-purple-light bg-purple-dark/20 text-white' 
                         : 'border-transparent hover:border-purple-light/30 text-text-muted'
                     }`}
                     onClick={() => setActiveTab(index)}
+                    title={exp.company}
                   >
                     {exp.company}
                   </button>
