@@ -8,7 +8,7 @@ const skillCategories = [
   {
     name: "Programming",
     icon: <FiCode />,
-    skills: ["Python", "JavaScript", "TypeScript", "HTML/CSS"]
+    skills: ["Python", "JavaScript", "TypeScript", "HTML/CSS", "C++"]
   },
   {
     name: "Data & AI",

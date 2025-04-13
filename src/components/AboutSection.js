@@ -18,7 +18,7 @@ const AboutSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
             <div className="lg:col-span-3">
               <p className="text-lg text-text-secondary mb-6">
-                Hey there! I'm <span className="text-white font-semibold">Dinesh</span>, an AI & Data Science Engineer with a passion for building intelligent systems that solve real-world problems.
+                Hey there! I'm <span className="text-foreground font-semibold">Dinesh</span>, an AI & Data Science Engineer with a passion for building intelligent systems that solve real-world problems.
               </p>
               
               <p className="text-text-secondary mb-6">
@@ -26,7 +26,7 @@ const AboutSection = () => {
               </p>
               
               <p className="text-text-secondary mb-6">
-                I recently completed my <span className="text-white font-medium">B.Tech in Computer Science Engineering</span> from JNTUA College of Engineering, Pulivendula (2024) where I built a strong foundation in software development and data science principles.
+                I recently completed my <span className="text-foreground font-medium">B.Tech in Computer Science Engineering</span> from JNTUA College of Engineering, Pulivendula (2024) where I built a strong foundation in software development and data science principles.
               </p>
               
               <p className="text-text-secondary">

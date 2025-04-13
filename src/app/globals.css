@@ -7,7 +7,7 @@
   --card-border: rgba(200, 200, 200, 0.5);
   --card-hover: rgba(255, 255, 255, 0.8);
   --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(150, 150, 150, 0.4);
   --glass-chip-text: rgba(50, 50, 50, 0.9);
   --glow-shadow: rgba(100, 100, 255, 0.5);
 }
@@ -112,6 +112,12 @@ body {
 }
 
 .glass-chip:hover {
+  background: rgba(200, 200, 200, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glass-chip:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

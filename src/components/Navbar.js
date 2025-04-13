@@ -97,8 +97,8 @@ const Navbar = () => {
         <div className="hidden md:flex space-x-8 items-center">
           <NavItem href="#home" text="Home" />
           <NavItem href="#about" text="About" />
-          <NavItem href="#experience" text="Experience" />
           <NavItem href="#projects" text="Projects" />
+          <NavItem href="#experience" text="Experience" />
           <NavItem href="#skills" text="Skills" />
           <NavItem href="#contact" text="Contact" />
           <ThemeToggle />

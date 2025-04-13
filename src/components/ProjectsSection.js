@@ -8,16 +8,15 @@ const projects = [
     description: "A browser extension that uses LLMs to summarize selected content from webpages and PDFs. Perfect for researchers and readers who need quick summaries of lengthy content.",
     image: "/projects/summarizer.jpg",
     tags: ["Python", "Ollama", "LangChain", "JavaScript", "LLMs"],
-    github: "https://github.com/dinesh/web-summarizer",
-    demo: "https://web-summarizer-demo.vercel.app"
+    github: "https://github.com/dineshveguru/Website_summarizer",
   },
   {
     title: "Resume Builder",
     description: "A React-based application that helps users create professional resumes with customizable templates. Features a drag-and-drop interface and PDF export functionality.",
     image: "/projects/resume-builder.jpg",
     tags: ["React JS", "Redux", "Styled Components", "PDF Generation"],
-    github: "https://github.com/dinesh/resume-builder",
-    demo: "https://resume-builder-demo.vercel.app"
+    github: "https://github.com/dineshveguru/resume-builder-remastered",
+    demo: "https://dineshveguru.github.io/resume-builder-remastered/"
   }
 ]
 
@@ -76,15 +75,17 @@ const ProjectsSection = () => {
                     >
                       <FiGithub />
                     </a>
-                    <a 
-                      href={project.demo} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="glass-button"
-                      aria-label="Live Demo"
-                    >
-                      <FiExternalLink />
-                    </a>
+                    {project.demo && (
+                      <a 
+                        href={project.demo} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="glass-button"
+                        aria-label="Live Demo"
+                      >
+                        <FiExternalLink />
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -99,7 +100,7 @@ const ProjectsSection = () => {
             className="text-center mt-16"
           >
             <a 
-              href="https://github.com/dinesh" 
+              href="https://github.com/dineshveguru" 
               target="_blank" 
               rel="noopener noreferrer"
               className="glass-button px-6 py-3 inline-flex items-center"
