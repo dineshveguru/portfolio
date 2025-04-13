@@ -168,3 +168,57 @@ body {
     filter: drop-shadow(0 0 12px rgba(100, 100, 255, 0.8));
   }
 }
+
+/* Add these accessibility and SEO-friendly styles */
+
+/* Improve accessibility with focus styles */
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 2px solid #9333ea; /* Purple focus ring */
+  outline-offset: 2px;
+}
+
+/* Ensure sufficient text contrast for better readability and SEO */
+.text-text-secondary {
+  color: #d1d5db !important; /* Ensure readable text contrast */
+}
+
+/* Improve text readability on mobile */
+@media (max-width: 640px) {
+  body {
+    font-size: 16px; /* Minimum font size for readability */
+  }
+  
+  h1 {
+    font-size: 1.75rem !important; /* Adjusted headings for mobile */
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Optimize for Core Web Vitals - reduce layout shift */
+img, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

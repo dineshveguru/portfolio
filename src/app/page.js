@@ -14,10 +14,14 @@ import BackToTopButton from "../components/BackToTopButton";
 import ErrorBoundary from "../components/ErrorBoundary";
 import SmoothScroll from "../components/SmoothScroll";
 import { motion } from "framer-motion";
+import { StructuredData } from "../components/StructuredData";
 
 export default function Home() {
   return (
     <ErrorBoundary>
+      {/* Add structured data for this page */}
+      <StructuredData />
+      
       {/* Navbar placed outside of SmoothScroll to ensure it stays fixed */}
       <Navbar />
       <BackToTopButton />
