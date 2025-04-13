@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Dex | Portfolio",
   description: "Personal portfolio website showcasing my projects, skills, and professional experience in software development",
-  keywords: ["portfolio", "web developer", "software engineer", "frontend", "backend", "fullstack", "developer portfolio"],
+  keywords: ["portfolio", "web developer", "software engineer", "frontend", "backend", "fullstack", "developer portfolio", "dinesh veguru", "veguru dinesh", "narasimha dinesh veguru", "veguru narasimha dinesh"],
   authors: [{ name: "Dex" }],
   metadataBase: new URL("https://dineshveguru.me"), // Replace with your actual domain
   alternates: {
