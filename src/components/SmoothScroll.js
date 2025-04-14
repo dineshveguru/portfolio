@@ -8,7 +8,7 @@ const DEFAULT_SPRING_CONFIG = {
   damping: 20,      // Resistance - higher means less oscillation
   stiffness: 100,   // Spring strength - higher means faster initial movement
   mass: 1.2,        // Weight feeling - higher means more momentum
-  restDelta: 0.01  // Stopping threshold - smaller means more precise stopping
+  restDelta: 0.01   // Stopping threshold - smaller means more precise stopping
 };
 
 export default function SmoothScroll({ 
@@ -20,6 +20,8 @@ export default function SmoothScroll({
   const containerRef = useRef(null);
   const [isReady, setIsReady] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  // Add state to detect mobile devices
+  const [isMobile, setIsMobile] = useState(false);
   
   // Get scroll values
   const { scrollY } = useScroll();
@@ -34,6 +36,15 @@ export default function SmoothScroll({
     // Skip during SSR
     if (typeof window === 'undefined') return;
     
+    // Check if device is mobile
+    const checkMobile = () => {
+      const isMobileDevice = window.innerWidth <= 768;
+      setIsMobile(isMobileDevice);
+    };
+    
+    // Initial check
+    checkMobile();
+    
     // Force immediate scroll to top on mount
     window.scrollTo(0, 0);
     
@@ -41,8 +52,8 @@ export default function SmoothScroll({
     const initTimer = setTimeout(() => {
       setIsReady(true);
       
-      // Measure and set body height once ready
-      if (containerRef.current) {
+      // Only modify body height for desktop
+      if (containerRef.current && !isMobile) {
         const contentHeight = containerRef.current.scrollHeight;
         document.body.style.height = `${contentHeight}px`;
       }
@@ -55,28 +66,44 @@ export default function SmoothScroll({
       }
     };
     
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     // This function will measure and set the body height to match content
     const updateBodyHeight = () => {
+      // First check if device is mobile
+      checkMobile();
+      
+      // Only proceed with smooth scroll for non-mobile
       if (!containerRef.current || !isReady) return;
       
-      const contentHeight = containerRef.current.scrollHeight;
-      document.body.style.height = `${contentHeight}px`;
+      // Only set body height for desktop devices
+      if (!isMobile) {
+        const contentHeight = containerRef.current.scrollHeight;
+        document.body.style.height = `${contentHeight}px`;
+      } else {
+        // Reset for mobile
+        document.body.style.height = '';
+      }
     };
     
-    // Update height on resize
-    window.addEventListener('resize', updateBodyHeight);
+    // Update height on resize with debounce
+    let resizeTimer;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateBodyHeight, 100);
+    };
+    
+    window.addEventListener('resize', handleResize, { passive: true });
     
     // Create a MutationObserver to detect content changes
     const observer = new MutationObserver(() => {
-      if (isReady) {
+      if (isReady && !isMobile) {
         updateBodyHeight();
       }
     });
     
     // Start observing the container for content changes
-    if (containerRef.current) {
+    if (containerRef.current && !isMobile) {
       observer.observe(containerRef.current, {
         childList: true,
         subtree: true,
@@ -111,13 +138,14 @@ export default function SmoothScroll({
     // Add event listeners to anchor links
     const anchors = document.querySelectorAll('a[href^="#"]');
     anchors.forEach(anchor => {
-      anchor.addEventListener('click', handleAnchorClick);
+      anchor.addEventListener('click', handleAnchorClick, { passive: false });
     });
     
     // Cleanup function
     return () => {
       clearTimeout(initTimer);
-      window.removeEventListener('resize', updateBodyHeight);
+      clearTimeout(resizeTimer);
+      window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
       observer.disconnect();
       anchors.forEach(anchor => {
@@ -125,9 +153,10 @@ export default function SmoothScroll({
       });
       document.body.style.height = '';
     };
-  }, [enabled, isReady, hasScrolled]);
+  }, [enabled, isReady, hasScrolled, isMobile]);
   
-  if (!enabled) {
+  // Return regular children for mobile or when smooth scroll is disabled
+  if (!enabled || isMobile) {
     return <>{children}</>;
   }
   
