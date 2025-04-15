@@ -28,7 +28,7 @@ const skillCategories = [
   {
     name: "DevOps & Tools",
     icon: <FiCloud />,
-    skills: ["AWS", "Linux", "Git", "Docker", "Ollama"]
+    skills: ["AWS", "Linux", "Git", "Docker", "Ollama", "GCP"]
   }
 ]
 

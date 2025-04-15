@@ -137,9 +137,8 @@ const Navbar = () => {
             >
               <NavItem href="#home" text="Home" />
               <NavItem href="#about" text="About" />
-              <NavItem href="#experience" text="Experience" />
               <NavItem href="#projects" text="Projects" />
-              <NavItem href="#github-activity" text="GitHub Activity" />
+              <NavItem href="#experience" text="Experience" />
               <NavItem href="#skills" text="Skills" />
               <NavItem href="#contact" text="Contact" />
             </motion.div>

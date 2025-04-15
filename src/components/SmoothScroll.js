@@ -31,7 +31,7 @@ export default function SmoothScroll({
   
   // Create a transform to move content in opposite direction of scroll
   const y = useTransform(smoothScrollY, (value) => -value);
-  
+  // FIXME: The navbar options are different from the desktop one in mobile
   useEffect(() => {
     // Skip during SSR
     if (typeof window === 'undefined') return;
